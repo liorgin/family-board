@@ -1,7 +1,10 @@
 import dayjs from "dayjs";
 import isoWeek from "dayjs/plugin/isoWeek";
+import isBetween from "dayjs/plugin/isBetween";
+
 
 dayjs.extend(isoWeek);
+dayjs.extend(isBetween)
 
 export function getMonth(month = dayjs().month()) {
   month = Math.floor(month);

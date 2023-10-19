@@ -1,10 +1,11 @@
-import { Auth, google } from "googleapis";
+import { google } from "googleapis";
 import auth from "../../../auth.json";
 
 export const oauth2Client = new google.auth.OAuth2({
   clientId: auth.clientId,
   clientSecret: auth.clientSecret,
   redirectUri: auth.redirecUrl,
+  
 });
 
 oauth2Client.on("tokens", (tokens) => {
