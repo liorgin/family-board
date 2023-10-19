@@ -1,4 +1,3 @@
-import { Dayjs } from "dayjs";
 import { getDayName } from "../../common/DateUtils";
 import { DayWithEvents } from "./MainCalendar";
 

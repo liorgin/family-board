@@ -43,7 +43,6 @@ export const MainCalendar = async () => {
 
   const daysWithEvents = days.map((row, rowIndex) => {
     return row.map((day, colIndex) => {
-      console.log(colIndex);
       return {
         day,
         events: events?.data?.items?.filter((event) => {
@@ -53,7 +52,6 @@ export const MainCalendar = async () => {
     });
   });
 
-  console.log(events.data.items);
   return (
     <>
       <div>{calendars.data.items?.length}</div>
