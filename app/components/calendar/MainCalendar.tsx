@@ -2,7 +2,6 @@ import { googleCalenderClient } from "@/app/common/google/GoogleCalenderClient";
 import { getMonth } from "../../common/DateUtils";
 import CalendarDay from "./CalendarDay";
 import { oauth2Client } from "@/app/common/google/Oauth2Client";
-import auth from "@/auth.json";
 import { calendar_v3 } from "googleapis";
 import { Dayjs } from "dayjs";
 
@@ -27,7 +26,7 @@ const isEventInRange = (event: calendar_v3.Schema$Event, day: Dayjs) => {
 export const MainCalendar = async () => {
   const days = getMonth();
 
-  oauth2Client.setCredentials({ refresh_token: auth.refreshToken });
+  oauth2Client.setCredentials({ refresh_token: process.env.GOOGLE_REFRESH_TOKEN });
 
   const calendars = await googleCalenderClient.calendarList.list();
   const events = await googleCalenderClient.events.list({
