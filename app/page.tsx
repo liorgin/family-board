@@ -57,10 +57,10 @@ export default async function Home() {
   return (
     <>
       <div className={`flex portrait:flex-col landscape:flex-row h-screen w-full`}>
-        <div className="basis-2/5">
+        <div className="grow-0 shrink-0 basis-3/5 bg-[url('/img1.jpg')] bg-cover">
           <Clock/>
         </div>
-        <div className="basis-3/5">
+        <div className="grow-0 shrink-0 basis-2/5 bg-black text-white">
           <MainCalendar daysWithEvents={daysWithEvents} />
         </div>
       </div>

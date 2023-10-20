@@ -4,7 +4,7 @@ import { DayWithEvents } from "./MainCalendar";
 const CalendarDay = ({ dayWithEvents, rowIndex, colIndex }: { dayWithEvents: DayWithEvents; rowIndex: number, colIndex: number }) => {
   return (
     <>
-      <div className="border border-green-500">
+      <div className="border border-white overflow-hidden">
         {rowIndex === 0 && <div>{dayjs.weekdaysShort()[colIndex]}</div>}
         {dayWithEvents.day.date() === 1 && <div>{dayWithEvents.day.format("MMM")}</div>}
         {dayWithEvents.day.date()}

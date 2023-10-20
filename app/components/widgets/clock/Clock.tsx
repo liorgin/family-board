@@ -11,7 +11,7 @@ const Clock = () => {
   
     return (
       <div>
-        <h2 className="text-8xl text-center font-bold">{clock}</h2>
+        <div className="text-8xl text-center font-bold text-white">{clock.slice(0,5)}<span className="text-2xl">{clock.slice(6)}</span></div>
       </div>
     )
   }
