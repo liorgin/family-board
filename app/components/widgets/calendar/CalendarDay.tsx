@@ -1,11 +1,12 @@
-import { getDayName } from "../../common/DateUtils";
+import dayjs from "dayjs";
 import { DayWithEvents } from "./MainCalendar";
 
 const CalendarDay = ({ dayWithEvents, rowIndex, colIndex }: { dayWithEvents: DayWithEvents; rowIndex: number, colIndex: number }) => {
   return (
     <>
-      <div className="">
-        {rowIndex === 0 && <div>{getDayName(colIndex)}</div>}
+      <div className="border border-green-500">
+        {rowIndex === 0 && <div>{dayjs.weekdaysShort()[colIndex]}</div>}
+        {dayWithEvents.day.date() === 1 && <div>{dayWithEvents.day.format("MMM")}</div>}
         {dayWithEvents.day.date()}
         {dayWithEvents.events.map((event, index) => (
           <div key={index}>{event.summary}</div>
