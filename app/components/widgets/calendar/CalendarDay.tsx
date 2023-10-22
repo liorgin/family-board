@@ -24,7 +24,7 @@ const CalendarDay = ({
           <div className="text-center">{dayjs.weekdaysShort()[colIndex]}</div>
         )}
         <div className="flex flex-row-reverse item-center justify-between border-b-2 border-white px-1">
-          <div className="text-xl">{dayWithEvents.day.date()}</div>
+          <div className={`text-xl p-0.5 ${dayWithEvents.day.isToday() ? 'rounded-full bg-red-500' : ''}`}>{dayWithEvents.day.date()}</div>
           {dayWithEvents.day.date() === 1 && (
             <div>{dayWithEvents.day.format("MMM")}</div>
           )}

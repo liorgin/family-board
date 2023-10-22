@@ -2,11 +2,13 @@ import dayjs from "dayjs";
 import isoWeek from "dayjs/plugin/isoWeek";
 import isBetween from "dayjs/plugin/isBetween";
 import localeData from "dayjs/plugin/localeData";
+import isToday from "dayjs/plugin/isToday";
 
 
 dayjs.extend(isoWeek);
 dayjs.extend(isBetween)
 dayjs.extend(localeData)
+dayjs.extend(isToday)
 
 export const DayJS = dayjs
 
