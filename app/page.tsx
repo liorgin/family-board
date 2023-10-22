@@ -27,7 +27,6 @@ const isEventInRange = (event: calendar_v3.Schema$Event, day: Dayjs) => {
 };
 
 export default async function Home() {
-
   oauth2Client.setCredentials({
     refresh_token: process.env.GOOGLE_REFRESH_TOKEN,
   });
@@ -56,14 +55,16 @@ export default async function Home() {
 
   return (
     <>
-      <div className={`flex portrait:flex-col landscape:flex-row h-screen w-full`}>
-        <div className="grow-0 shrink-0 basis-3/5 bg-[url('/img1.jpg')] bg-cover">
-          <Clock/>
+      <div className={'grid portrait:grid-rows-5 portrait:grid-cols-1 landscape:grid-rows-1 landscape:grid-cols-5   h-screen w-full landscape:auto-cols-fr portrait:auto-rows-fr	'}>
+        <div className="portrait:row-span-2 landscape:col-span-2 bg-[url('/img1.jpg')] bg-cover">
+          <Clock />
         </div>
-        <div className="grow-0 shrink-0 basis-2/5 bg-black text-white">
+        <div className="portrait:row-span-3 landscape:col-span-3 bg-black text-white">
           <MainCalendar daysWithEvents={daysWithEvents} />
         </div>
       </div>
+
+      
     </>
   );
 }

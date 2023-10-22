@@ -14,10 +14,9 @@ export const MainCalendar = async ({
 }) => {
   return (
     <>
-      <div className="grid grid-rows-1 h-full">
-        <div className="grid grid-row-5 auto-rows-fr">
+        <div className="grid grid-row-5 auto-rows-fr gap-2 h-full p-4">
           {daysWithEvents.map((row, rowIndex) => (
-            <div key={rowIndex} className="grid grid-flow-col auto-cols-fr">
+            <div key={rowIndex} className="grid grid-flow-col auto-cols-fr gap-2">
               {row.map((day, colIndex) => (
                 <CalendarDay
                   key={colIndex}
@@ -29,7 +28,6 @@ export const MainCalendar = async ({
             </div>
           ))}
         </div>
-      </div>
     </>
   );
 };
