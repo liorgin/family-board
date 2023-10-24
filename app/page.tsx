@@ -1,7 +1,3 @@
-// "use client";
-
-// import { useWindowSize } from "@uidotdev/usehooks";
-// import { useEffect, useState } from "react";
 import dayjs, { Dayjs } from "dayjs";
 import { calendar_v3 } from "googleapis";
 import { getMonth } from "./common/DateUtils";
@@ -12,6 +8,9 @@ import {
   MainCalendar,
 } from "./components/widgets/calendar/MainCalendar";
 import Clock from "./components/widgets/clock/Clock";
+
+import style from "./app.module.scss";
+import { EventList } from "./components/upcomming-events/EventList";
 
 const isEventInRange = (event: calendar_v3.Schema$Event, day: Dayjs) => {
   if (event.start?.dateTime) {
@@ -55,16 +54,15 @@ export default async function Home() {
 
   return (
     <>
-      <div className={'grid portrait:grid-rows-5 portrait:grid-cols-1 landscape:grid-rows-1 landscape:grid-cols-5   h-screen w-full landscape:auto-cols-fr portrait:auto-rows-fr	'}>
-        <div className="portrait:row-span-2 landscape:col-span-2 bg-[url('/img1.jpg')] bg-cover">
+      <div className={style.container}>
+        <div className={style.section1}>
           <Clock />
+          <EventList events={events.data.items?.slice(0, 7) || []} />
         </div>
-        <div className="portrait:row-span-3 landscape:col-span-3 bg-black text-white">
+        <div className={style.section2}>
           <MainCalendar daysWithEvents={daysWithEvents} />
         </div>
       </div>
-
-      
     </>
   );
 }

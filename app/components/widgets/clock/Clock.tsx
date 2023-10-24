@@ -2,16 +2,23 @@
 
 import dayjs from "dayjs";
 import { useState } from "react";
+import style from "./clock.module.scss"
+import { Condiment } from "next/font/google";
 
 const Clock = () => {
-    const [clock, setClock] = useState(dayjs().format('HH:mm:ss'))
+    const [clock, setClock] = useState(dayjs())
+    
     setInterval(() => {
-      setClock(dayjs().format('HH:mm:ss'))
+      setClock(dayjs())
     }, 100);
   
+
+    const format = clock.format('HH:mm:ss')
+
     return (
       <div>
-        <div className="text-8xl text-center font-bold text-white">{clock.slice(0,5)}<span className="text-2xl">{clock.slice(6)}</span></div>
+        <div className={style.clockTime}>{format.slice(0,5)}<span className={style.clockSeconds}>{format.slice(6)}</span></div>
+        <div className={style.date}>{clock.format('dddd, MMMM DD')}</div>
       </div>
     )
   }
