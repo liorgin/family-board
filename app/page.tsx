@@ -1,3 +1,5 @@
+
+
 import dayjs, { Dayjs } from "dayjs";
 import { calendar_v3 } from "googleapis";
 import { getMonth } from "./common/DateUtils";
@@ -11,6 +13,7 @@ import Clock from "./components/widgets/clock/Clock";
 
 import style from "./app.module.scss";
 import { EventList } from "./components/upcomming-events/EventList";
+import { getUserByUsername } from "./services/users.service";
 
 const isEventInRange = (event: calendar_v3.Schema$Event, day: Dayjs) => {
   if (event.start?.dateTime) {
@@ -26,8 +29,11 @@ const isEventInRange = (event: calendar_v3.Schema$Event, day: Dayjs) => {
 };
 
 export default async function Home() {
+
+  const user = await getUserByUsername('lginsberg9@gmail.com')
+
   oauth2Client.setCredentials({
-    refresh_token: process.env.GOOGLE_REFRESH_TOKEN,
+    refresh_token: user?.refreshToken
   });
 
   const orientation = "col";

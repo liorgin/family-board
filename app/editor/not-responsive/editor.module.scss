@@ -1,0 +1,22 @@
+
+
+.editor {
+    background: grey;
+}
+
+
+.actionPanel {
+        background-color: grey;
+        height: 50px;
+        display: flex;
+}
+
+.actionPanelItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 80px;
+    height: 50px;
+    background: white;
+}

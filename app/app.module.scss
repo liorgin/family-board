@@ -19,18 +19,18 @@
 
 .section1 {
     
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.226) 50%, rgba(0, 0, 0, 0.84)),
-    url('/img1.jpg');
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.426), rgba(0, 0, 0, 0.427)),
+    url('/nature-5-1396645.jpg');
     background-size: cover;
 
     @media (orientation: landscape) {
-        grid-column: span 2 / span 2;
+        grid-column: span 3 / span 3;
     }
 
     @media (orientation: portrait) {
-        grid-row: span 2 / span 2;
-        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.226) 50%, rgba(0, 0, 0, 0.73)),
-        url('/img1.jpg');
+        grid-row: span 3 / span 3;
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.426) , rgba(0, 0, 0, 0.427)),
+        url('/nature-5-1396645.jpg');
     }
 }
 
@@ -39,10 +39,10 @@
     color: white;
 
     @media (orientation: landscape) {
-        grid-column: span 3 / span 3;
+        grid-column: span 2 / span 2;
     }
 
     @media (orientation: portrait) {
-        grid-row: span 3 / span 3;
+        grid-row: span 2 / span 2;
     }
 }

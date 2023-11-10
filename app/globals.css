@@ -12,6 +12,19 @@
   }
 }
 
-body {
 
+
+.gm-style-cc {
+  display: none;
+}
+
+.gmnoprint a, .gmnoprint span {
+  display:none;
+}
+.gmnoprint div {
+  background:none !important;
+}
+
+img[alt="Google"]{
+  display:none !important;
 }

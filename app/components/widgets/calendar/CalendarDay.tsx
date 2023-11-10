@@ -20,11 +20,11 @@ const CalendarDay = ({
   return (
     <>
       <div className="overflow-hidden padding">
-        {rowIndex === 0 && (
+        {/* {rowIndex === 0 && (
           <div className="text-center">{dayjs.weekdaysShort()[colIndex]}</div>
-        )}
-        <div className="flex flex-row-reverse item-center justify-between border-b-2 border-white px-1">
-          <div className={`text-xl p-0.5 ${dayWithEvents.day.isToday() ? 'rounded-full bg-red-500' : ''}`}>{dayWithEvents.day.date()}</div>
+        )} */}
+        <div className={`flex flex-row-reverse  ${dayWithEvents.day.isToday() ? ' bg-red-500' : ''} item-center justify-between border-b-2 border-white px-1`}>
+          <div className={`text-xl p-0.5`}>{dayWithEvents.day.date()}</div>
           {dayWithEvents.day.date() === 1 && (
             <div>{dayWithEvents.day.format("MMM")}</div>
           )}
