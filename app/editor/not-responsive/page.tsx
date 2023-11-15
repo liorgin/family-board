@@ -8,10 +8,14 @@ import styles from "./editor.module.scss";
 import GridLayout, { Layout } from "react-grid-layout";
 import { v4 as uuidv4 } from "uuid";
 
-import { ReactNode, useContext, useState } from "react";
-import ReactGridLayout from "react-grid-layout";
 import GoogleMap from "@/app/components/GoogleMaps/GoogleMap";
 import Dictaphone from "@/app/components/speach/Dictaphone";
+import { ReactNode, useRef, useState } from "react";
+import ReactGridLayout from "react-grid-layout";
+import useSpeechRecognition from "@/app/components/speach/useSpeechRecognition";
+import useVoiceStore from "@/app/common/hooks/useVoiceStore";
+import React from "react";
+
 
 const initialLayout = {
   i: "editor",
@@ -23,7 +27,33 @@ const initialLayout = {
 } as Layout;
 
 export default function Editor() {
+  const {startListening, isRecognitionSupported} = useSpeechRecognition()
+
+
+
+
+  const {isAwake, text} = useVoiceStore()
+
+  const show = useRef(isAwake)
+
+  const unsub1 = useVoiceStore.subscribe((s, p) => {
+    console.log('useVoiceStore.subscribe', s, p)
+    show.current = s.isAwake
+  } )
+
+
+
+  
+  console.log('render Dictaphone', isAwake)
+
+  
   const [layout, setLayout] = useState([initialLayout]);
+  const [isVisible, setIsVisible] = React.useState(false);
+
+  const onClose = React.useCallback(() => {
+    setIsVisible(false);
+  }, []);
+
 
   const onDrop = (
     layout: GridLayout.Layout[],
@@ -39,9 +69,21 @@ export default function Editor() {
       { ...item, i: `${uuidv4()}}` },
     ]);
   };
+
+  if (!isRecognitionSupported) {
+    return <span>{`Browser doesn't support speech recognition.`}</span>;
+  }
+
   return (
     <>
-    <Dictaphone />
+
+
+  
+    <Dictaphone show={show.current}/>
+
+
+    <button onClick={startListening}>Start</button>
+    <div>{text}</div>
       <GoogleMap />
       <>{layout.map((item) => JSON.stringify(item))}</>
 
